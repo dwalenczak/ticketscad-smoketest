@@ -16,6 +16,10 @@ REM   run_tests.bat security         - Security tests (auth, CSRF, SQLi)
 REM   run_tests.bat ajax             - AJAX endpoint tests
 REM   run_tests.bat map              - Map/tile tests
 REM   run_tests.bat config           - Config page tests
+REM   run_tests.bat personnel        - Personnel module tests
+REM   run_tests.bat access           - User access level tests
+REM   run_tests.bat workflow         - End-to-end workflow tests
+REM   run_tests.bat tables           - Config table CRUD tests
 REM   run_tests.bat all              - All tests, don't stop on first failure
 REM
 REM Options (append to any command):
