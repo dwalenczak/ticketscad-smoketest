@@ -44,11 +44,11 @@ class TestSearch:
         nav.to_main()
         try:
             # Search text input
-            search_input = nav.driver.find_elements(By.NAME, "frm_search")
+            search_input = nav.driver.find_elements(By.NAME, "frm_query")
             assert len(search_input) > 0, "Search text input not found"
 
             # Search-in column selector
-            search_in = nav.driver.find_elements(By.NAME, "frm_search_in")
+            search_in = nav.driver.find_elements(By.NAME, "frm_query_in")
             assert len(search_in) > 0, "Search-in dropdown not found"
         finally:
             nav.to_default()
@@ -62,7 +62,7 @@ class TestSearch:
 
         nav.to_main()
         try:
-            search_input = nav.driver.find_element(By.NAME, "frm_search")
+            search_input = nav.driver.find_element(By.NAME, "frm_query")
             search_input.clear()
             search_input.send_keys("test")
 

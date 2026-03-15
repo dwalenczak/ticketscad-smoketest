@@ -51,7 +51,7 @@ class TestMobile:
 
         # Open map popup directly
         logged_in_browser.execute_script(
-            f"window.open('{base_url}map_popup.php?ticket_id=5', "
+            f"window.open('{base_url}map_popup.php?id=5', "
             "'mobile_map_test', 'width=800,height=600');"
         )
         time.sleep(5)  # Allow all three invalidateSize passes

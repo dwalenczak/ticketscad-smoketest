@@ -58,7 +58,7 @@ class TestTicketCreate:
             # Look for key fields by name
             expected_fields = [
                 "frm_in_types_id", # Nature/Incident Type dropdown
-                "frm_priority",    # Priority dropdown
+                "frm_severity",    # Priority/Severity dropdown
                 "frm_city",        # City
                 "frm_state",       # State
             ]
@@ -225,7 +225,7 @@ class TestTicketPopup:
         """Popup window for a ticket should load without errors."""
         # Open popup via direct URL
         logged_in_browser.execute_script(
-            f"window.open('{base_url}map_popup.php?ticket_id=5', "
+            f"window.open('{base_url}map_popup.php?id=5', "
             "'popup_test', 'width=900,height=600');"
         )
         time.sleep(3)
@@ -251,7 +251,7 @@ class TestTicketPopup:
     def test_popup_map_has_tiles(self, nav, base_url, logged_in_browser):
         """Popup map should load tiles without needing F5 refresh."""
         logged_in_browser.execute_script(
-            f"window.open('{base_url}map_popup.php?ticket_id=5', "
+            f"window.open('{base_url}map_popup.php?id=5', "
             "'map_test', 'width=900,height=600');"
         )
         time.sleep(4)  # Allow time for multi-pass tile fix
