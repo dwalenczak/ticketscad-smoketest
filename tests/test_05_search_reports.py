@@ -48,7 +48,7 @@ class TestSearch:
             assert len(search_input) > 0, "Search text input not found"
 
             # Search-in column selector
-            search_in = nav.driver.find_elements(By.NAME, "frm_query_in")
+            search_in = nav.driver.find_elements(By.NAME, "frm_search_in")
             assert len(search_in) > 0, "Search-in dropdown not found"
         finally:
             nav.to_default()
