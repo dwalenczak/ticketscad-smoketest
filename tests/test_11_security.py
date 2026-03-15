@@ -80,7 +80,7 @@ class TestSQLInjection:
             result = nav.driver.execute_script(f"""
                 var xhr = new XMLHttpRequest();
                 var formData = new FormData();
-                formData.append('frm_search', 'test');
+                formData.append('frm_query', 'test');
                 formData.append('frm_search_in', 'description');
                 formData.append('frm_ordertype', "date; DROP TABLE users; --");
                 formData.append('frm_order_desc', 'DESC');
@@ -124,12 +124,12 @@ class TestAuthGating:
         "facilities.php",
         "reports.php",
         "config.php",
-        "sops.php",
         "chat.php",
-        "personnel.php",
+        "member.php",       # Personnel module
         "log.php",
         "mobile.php",
         "board.php",
+        "routes.php",       # Dispatch page
     ]
 
     @pytest.mark.parametrize("page", PROTECTED_PAGES)
