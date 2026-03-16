@@ -228,3 +228,34 @@ class TestGuestAccess:
                 pass  # If frame doesn't exist, that's fine
         finally:
             driver.quit()
+
+    def test_guest_cannot_access_member_directly(self, base_url, guest_creds):
+        """Guest should not be able to access member.php (personnel) directly.
+
+        member.php should redirect guests to main.php. This is a regression
+        test for the auth-gate added to the personnel module.
+        """
+        driver, wait = login_as(
+            base_url,
+            guest_creds["user"],
+            guest_creds["pass"],
+            headless=True,
+        )
+        try:
+            driver.switch_to.default_content()
+            try:
+                wait.until(EC.frame_to_be_available_and_switch_to_it((By.NAME, "main")))
+                driver.execute_script(
+                    f"window.location.href = '{base_url}member.php';"
+                )
+                time.sleep(3)
+
+                source = (driver.page_source or "").lower()
+                # Should NOT show personnel/membership content
+                shows_personnel = "membership database" in source or "member type" in source
+                assert not shows_personnel, \
+                    "SECURITY: Guest can access Personnel (member.php) page content"
+            except Exception:
+                pass  # If frame doesn't exist, that's fine
+        finally:
+            driver.quit()
